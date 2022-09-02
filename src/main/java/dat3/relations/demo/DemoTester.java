@@ -22,8 +22,6 @@ public class DemoTester implements CommandLineRunner {
     System.out.println("I'm called when enver the program is started");
 
     //This is where we will add all the demo code
-
-    //This is where we will add all the demo code
     Person p1 = new Person("Peter","pe@a.dk","hemlig");
     Person p2 = new Person("Janne","ja@a.dk","super-hemlig");
     personRepository.save(p1);
