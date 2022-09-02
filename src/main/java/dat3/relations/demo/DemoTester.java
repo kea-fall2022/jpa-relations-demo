@@ -26,21 +26,36 @@ public class DemoTester implements CommandLineRunner {
     personRepository.deleteAll();
     addressRepository.deleteAll();
 
-
-
-
     Person p1 = new Person("kurt","kurt@a.dk","123");
     Person p2 = new Person("hanne","hanne@a.dk","123");
+    Person p3 = new Person("aaa","hdde@a.dk","123");
 
     Address a1 = new Address("Lyngbyvej 22","Lyngby");
     a1.addPerson(p1);
     a1.addPerson(p2);
+    a1.addPerson(p3);
     p1.setAddress(a1);
     p2.setAddress(a1);
+    p3.setAddress(a1);
 
     addressRepository.save(a1);
-    personRepository.save(p1);
-    personRepository.save(p2);
+
+    System.out.println("Hit Enter to fetch an address");
+    System.in.read();
+
+    Address address = addressRepository.findById(a1.getId()).get();
+    System.out.println(address.getCity());
+
+    System.out.println("Hit Enter to use persons");
+    System.in.read();
+
+    System.out.println(address.getPersons().get(0).getUsername());
+
+
+
+
+
+
 
     System.out.println("Hit Enter to stop program");
     System.in.read();

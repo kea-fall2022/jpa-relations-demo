@@ -21,11 +21,15 @@ public class Address {
   public Address() {}
 
 
-  @OneToMany(mappedBy = "address")
+  @OneToMany(mappedBy = "address", cascade = CascadeType.ALL,fetch = FetchType.LAZY)
   private List<Person> persons = new ArrayList<>();
 
   public void addPerson(Person person){
     persons.add(person);
+  }
+
+  public List<Person> getPersons(){
+    return persons;
   }
 
 

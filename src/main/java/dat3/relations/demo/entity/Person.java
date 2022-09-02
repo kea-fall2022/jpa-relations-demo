@@ -1,8 +1,6 @@
 package dat3.relations.demo.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 @Entity
 public class Person {
@@ -11,7 +9,7 @@ public class Person {
   private String email;
   private String password;
 
-  @ManyToOne
+  @ManyToOne(cascade = CascadeType.ALL)
   private Address address;
 
   public Person(String username, String email, String password) {
