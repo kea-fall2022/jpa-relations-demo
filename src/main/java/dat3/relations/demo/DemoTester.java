@@ -4,6 +4,7 @@ import dat3.relations.demo.entity.Address;
 import dat3.relations.demo.entity.Person;
 import dat3.relations.demo.repositories.AddressRepository;
 import dat3.relations.demo.repositories.PersonRepository;
+import dat3.relations.demo.services.AddressService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Controller;
 
@@ -12,10 +13,12 @@ public class DemoTester implements CommandLineRunner {
 
   PersonRepository personRepository;
   AddressRepository addressRepository;
+  AddressService addressService;
 
-  public DemoTester(PersonRepository personRepository, AddressRepository addressRepository) {
-    this.personRepository = personRepository;
-    this.addressRepository = addressRepository;
+  public DemoTester(PersonRepository pr, AddressRepository ar, AddressService as) {
+    this.personRepository = pr;
+    this.addressRepository = ar;
+    this.addressService = as;
   }
 
   @Override
@@ -42,14 +45,10 @@ public class DemoTester implements CommandLineRunner {
 
     System.out.println("Hit Enter to fetch an address");
     System.in.read();
+    addressService.getAddressTrans(a1.getId(),true);
 
-    Address address = addressRepository.findById(a1.getId()).get();
-    System.out.println(address.getCity());
 
-    System.out.println("Hit Enter to use persons");
-    System.in.read();
 
-    System.out.println(address.getPersons().get(0).getUsername());
 
 
 

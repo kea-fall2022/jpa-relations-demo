@@ -21,7 +21,7 @@ public class Address {
   public Address() {}
 
 
-  @OneToMany(mappedBy = "address", cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+  @OneToMany(mappedBy = "address", cascade = CascadeType.ALL,fetch = FetchType.EAGER)
   private List<Person> persons = new ArrayList<>();
 
   public void addPerson(Person person){
