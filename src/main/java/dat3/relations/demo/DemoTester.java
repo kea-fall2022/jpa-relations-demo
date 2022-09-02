@@ -1,5 +1,6 @@
 package dat3.relations.demo;
 
+import dat3.relations.demo.entity.Address;
 import dat3.relations.demo.entity.Person;
 import dat3.relations.demo.repositories.AddressRepository;
 import dat3.relations.demo.repositories.PersonRepository;
@@ -22,10 +23,22 @@ public class DemoTester implements CommandLineRunner {
     System.out.println("I'm called when enver the program is started");
 
     //This is where we will add all the demo code
-    Person p1 = new Person("Peter","pe@a.dk","hemlig");
-    Person p2 = new Person("Janne","ja@a.dk","super-hemlig");
+    personRepository.deleteAll();
+    addressRepository.deleteAll();
+
+
+
+
+    Person p1 = new Person("kurt","kurt@a.dk","123");
+    Person p2 = new Person("hanne","hanne@a.dk","123");
+
     personRepository.save(p1);
     personRepository.save(p2);
+
+    Address a1 = new Address("Lyngbyvej 22","Lyngby");
+    a1.addPerson(p1);
+    a1.addPerson(p2);
+    addressRepository.save(a1);
 
     System.out.println("Hit Enter to stop program");
     System.in.read();

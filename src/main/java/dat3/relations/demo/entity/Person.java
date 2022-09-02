@@ -1,17 +1,13 @@
 package dat3.relations.demo.entity;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
-@Entity(name="kunde")
+@Entity
 public class Person {
   @Id
-  @Column(name="brugernavn")
   private String username;
-  @Column(nullable = false,unique = true)
   private String email;
-  @Column(nullable = false,length = 80)
   private String password;
 
   public Person(String username, String email, String password) {
