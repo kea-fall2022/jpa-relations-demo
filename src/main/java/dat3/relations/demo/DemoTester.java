@@ -32,13 +32,15 @@ public class DemoTester implements CommandLineRunner {
     Person p1 = new Person("kurt","kurt@a.dk","123");
     Person p2 = new Person("hanne","hanne@a.dk","123");
 
-    personRepository.save(p1);
-    personRepository.save(p2);
-
     Address a1 = new Address("Lyngbyvej 22","Lyngby");
     a1.addPerson(p1);
     a1.addPerson(p2);
+    p1.setAddress(a1);
+    p2.setAddress(a1);
+
     addressRepository.save(a1);
+    personRepository.save(p1);
+    personRepository.save(p2);
 
     System.out.println("Hit Enter to stop program");
     System.in.read();

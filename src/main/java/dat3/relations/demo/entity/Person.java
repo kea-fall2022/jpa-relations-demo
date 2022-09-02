@@ -2,6 +2,7 @@ package dat3.relations.demo.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Person {
@@ -10,10 +11,21 @@ public class Person {
   private String email;
   private String password;
 
+  @ManyToOne
+  private Address address;
+
   public Person(String username, String email, String password) {
     this.username = username;
     this.email = email;
     this.password = password;
+  }
+
+  public Address getAddress() {
+    return address;
+  }
+
+  public void setAddress(Address address) {
+    this.address = address;
   }
 
   public Person() {

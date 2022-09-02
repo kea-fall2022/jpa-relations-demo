@@ -21,8 +21,7 @@ public class Address {
   public Address() {}
 
 
-  @OneToMany()
-  @JoinColumn(name="address_id")
+  @OneToMany(mappedBy = "address")
   private List<Person> persons = new ArrayList<>();
 
   public void addPerson(Person person){
