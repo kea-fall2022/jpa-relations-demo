@@ -1,10 +1,20 @@
 package dat3.relations.demo;
 
+import dat3.relations.demo.repositories.AddressRepository;
+import dat3.relations.demo.repositories.PersonRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Controller;
 
 @Controller
 public class DemoTester implements CommandLineRunner {
+
+  PersonRepository personRepository;
+  AddressRepository addressRepository;
+
+  public DemoTester(PersonRepository personRepository, AddressRepository addressRepository) {
+    this.personRepository = personRepository;
+    this.addressRepository = addressRepository;
+  }
 
   @Override
   public void run(String... args) throws Exception {
